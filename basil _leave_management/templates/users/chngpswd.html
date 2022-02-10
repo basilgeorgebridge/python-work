@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>change Password</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery.js' %}" type="text/javascript"></script> 
+</head>
+<body>
+<div class="myDiv">
+<h2>Change Password</h2>
+<form id="chngpswd" action="/chngpswd/{{user.user_id}}/" method="post">
+    {% csrf_token %} 
+    <br>
+    <br>
+    <br>
+    <label><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; New Password : </b></label>
+    <input class="input" type="password" id="newpswd" placeholder="New Password...."  name="newpswd" required/>
+    <br>
+    <div>
+        <h5>Note:-<br>
+            please enter atleast eight characters,contain atleast one digit.<br></h5>
+    </div>
+    <label><b> Confirm Password : </b></label>
+    <input class="input" type="password"  id="conpswd" placeholder="Confirm Password"  name="conpswd" required/>
+    <br> 
+    <br>
+    <input type="submit"  id="conpswd1" value="submit"  class="button button2">
+    <a type="submit" href="profile.html" class="button button2">back</a>
+</form>
+
+</div>
+<footer>
+    <p class="text-footer">
+        Copyright basilelavans©-All rights are reserved
+    </p>
+</footer>
+</body>
+</html>

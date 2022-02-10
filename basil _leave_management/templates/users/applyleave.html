@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leave Apply Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery.js' %}" type="text/javascript"></script>
+</head>
+<body>
+<div class="myDiv">
+    <h2>Apply Leave</h2>
+    <br>
+    <br>
+<form id="applylv" method="POST">
+    {% csrf_token %}
+    <label for="lvtype">Leave Type : </label>
+    <select name="lvtype" id="lvtype"required>
+        <option value=""></option>
+        <option value="casual">Casual</option>
+        <option value="sick">Sick</option>
+        <option value="emergency">Emergency</option>
+        <option value="paternity">Paternity</option>
+      </select><br><br>
+
+    <label for="lvstarts" >From : </label>
+    <input type="date"  id="from" name="lv-from" required><br><br>
+
+    <label for="lvends">To : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="date" id="to" name="lv-to" required><br><br>
+    
+    <label for="day"><input type="radio" value="fullday" name="day">Fullday</label>
+    <label for="day"><input type="radio" value="halfday" name="day">Halfday</label>
+    <br><br>
+
+    <label for="session"><input type="radio" class="half" name="half" value="firstHalf">First Half</label>
+    <label for="session"><input type="radio" class="half" name="half" value="secondHalf">Second Half</label>
+    
+    <br><br>
+
+    <label for="reason">Reason:</label>
+    <textarea id="reason" name="reason" rows="4" cols="40" required></textarea><br><br>
+    <input type="submit" class="button button2" name="submit" value="Submit">
+    <a type="button" href="{% url 'profile' %}" class="button button2">back</a>
+    <div>
+        {% for messages in messages %}
+        <h3>{{messages}}</h3>
+        {% endfor %}
+    </div> 
+</div>
+</form>
+</div>
+<footer>
+    <p class="text-footer">
+      Copyright basilelavans©-All rights are reserved
+    </p>
+</footer>
+</body>
+</html>

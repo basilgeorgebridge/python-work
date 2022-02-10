@@ -1,0 +1,15 @@
+npx nuxi init bridgesite
+
+cd bridgesite
+
+code .
+
+npm install
+
+npm install create-nuxt-app
+
+create-nuxt-app bridgesite
+
+npx create-nuxt-app bridgesite
+
+

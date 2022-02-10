@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+	<title>My Javascript</title>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="dynamic.css" />
+    <script>
+        $(document).ready(function(){
+        $(".form-group").hide();
+        $("#button1").click(function(){
+        $(".form-group").show();});
+        var x = 0; 
+        var list_maxField = 10; 
+        $('.list_add_button').click(function()
+            {
+            
+            if(x < list_maxField){ 
+                x++; 
+                var list_fieldHTML = '<div class="row"><div class="col-xs-4 col-sm-4 col-md-4"><div class="form-group"><input name="list['+x+'][]" type="text" placeholder="Subject Name" class="form-control"/></div></div><div class="col-xs-7 col-sm-7 col-md-7"><div class="form-group"><input name="list['+x+'][]" type="text" class="marks" placeholder="enter your Marks" class="form-control"/></div></div><div class="col-xs-1 col-sm-7 col-md-1"><a href="javascript:void(0);" class="list_remove_button btn btn-danger">-</a></div></div>';
+                $('.list_wrapper').append(list_fieldHTML); 
+            }
+            });
+        
+            
+            $('.list_wrapper').on('click', '.list_remove_button', function()
+            {
+               $(this).closest('div.row').remove();
+               x--;
+            });
+
+               function add() {
+                    var sum = 0;
+                    $(".marks").each(function() {      
+                    sum += +this.value;
+                });
+                return sum;
+                }
+
+                $('#button2').click(function() {
+                   alert(add());
+         });
+                $("#button1").dblclick(function(){
+                    $(".form-group").hide();
+  });
+    });
+    </script>
+</head>
+ 
+<body>
+  
+    <div class="container">
+        <div class="row centered-form">
+            <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2">
+                <div class="panel panel-info">
+ 
+                    <div class="panel-heading text-center">
+                   
+                        <h1 class="panel-title">Marks calculator</h1>
+                    </div>
+ 
+                    <div class="panel-body">
+                        <form role="form" method="post" action="">
+                            
+                            <div class="list_wrapper">  
+                                <div class="row">
+                                    <input type="button" id="button1" value="Enter Your Input" class="btn btn-info btn-block">
+                                    <div class="col-xs-4 col-sm-4 col-md-4">
+ 
+                                        <div class="form-group">
+                                            Subject Name
+                                            <input name="list[0][]" type="text" placeholder="Subject Name" class="form-control"/>
+                                            
+                                        </div>
+                                    </div>
+ 
+                                    <div class="col-xs-7 col-sm-7 col-md-7">
+                                        <div class="form-group">
+                                            Marks
+                                            <input autocomplete="off"  name="list[0][]" type="text" placeholder="enter your Marks" class="marks" class="form-control"/>
+                                        </div>
+                                    </div> 
+ 
+                                    <div class="col-xs-1 col-sm-1 col-md-1">
+                                        <br>
+                                       <button class="btn btn-primary list_add_button" type="button">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <input type="button" value="Sum" id="button2" class="btn btn-info btn-block">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

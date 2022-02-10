@@ -1,0 +1,9 @@
+form = ReviewForm1(request.POST)
+if form.is_valid():
+    review = form.cleaned_data
+    reviewfile_name = "/root/sjfacweb/" + remote.sjfacweb()
+    #content writes to timestamped filename
+    remote.write_reviewfile(reviewfile_name,False,review)
+    return redirect('somewhere')
+else:
+    return render(request, 'template.html', {'form': form})

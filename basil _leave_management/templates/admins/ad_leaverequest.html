@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>admin leave Requests</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery.js' %}" type="text/javascript"></script> 
+</head>
+<body>
+<div class="myDiv">  
+  <div class="head">
+    <h1>Leave Requests</h1>
+  </div>
+  <form>
+    <input type="text" placeholder="Search.." name="search">
+    <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
+    <input type="submit"  id="fa fa-search" value="search" class="button button3">
+</form>
+<table>
+
+    <tr><th>Sl.No</th>
+        <th>EmployeeName</th>
+        <th>Type</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Daytype</th>
+        <th>Session</th>
+        <th>Status</th>
+        <th>Reason</th>
+        <th>Operations</th>
+     </tr>
+   <tr>
+    {% for det in lv %}
+    <tr><td>{{user.id}}</td>
+        <td>{{user.first_name}} {{user.last_name}}</td>
+        <td>{{ det.leavetype }}</td>
+        <td>{{ det.fromdate }}</td>
+        <td>{{ det.daytype }}</td>
+        <td>{{ det.session }}</td>
+        <td>{{ det.to }}</td>
+        <td>status</td>
+        <td>{{ det.reason }}</td>
+        <td><i id="icons" class="fa fa-thumbs-up icons" style="font-size:36px"></i>&nbsp;&nbsp;&nbsp;<i id="dicons" class="fa fa-thumbs-down dicons" style="font-size:36px"></i></td>   
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<a type="button" href="{% url 'ad-profile' %}" class="button button2">back</a>
+</div>
+</body>
+</html>

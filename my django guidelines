@@ -1,0 +1,33 @@
+django process:
+
+sudo apt update
+sudo apt install python3-django
+sudo apt install python3-pip python3-venv
+sudo python3 -m venv my_env
+source my_env/bin/activate
+sudo pip install django
+sudo python3 -V
+sudo django-admin startproject todolist
+sudo python3 manage.py makemigrations
+sudo python3 manage.py migrate
+sudo python3 manage.py startapp todo
+python3 manage.py runserver
+
+privileges:
+sudo chmod -R 755 todolist
+sudo chown -R bridge:bridge todolist/
+
+my sql client installation:
+// sudo apt-get install python3-mysqldb
+// sudo apt-get install libmysqlclient-dev
+pip install mysqlclient
+
+create db and give it to databases in settings
+
+{% extends "base.html"%}
+{% block content %}
+{%endblock content %}
+
+
+reverse("index")
+

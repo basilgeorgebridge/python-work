@@ -1,0 +1,80 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+{% load static %}
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>MembersTable</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{% url 'adminindex' %}">Home</a></li>
+            <li class="breadcrumb-item active">MembersTable</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <a href="{% url 'add-members' %}"><button class="button btn-primary"><i class='fas fa-user-plus'></i> Add Members
+        </button></a>
+    </div>
+  </section>
+  <div>
+    {% if messages %}
+    <h3>{{message}}</h3>
+    {% endif %}
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <table id="datatable" class="table table-bordered table-hover">
+                <br>
+                <thead>
+                  <tr class="center">
+                    <th>User Id </th>
+                    <th>Full Name</th>
+                    <th>Age</th>
+                    <th>Status</th>
+                    <th>Operations</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for user_detail in users %}
+                  <tr class="center">
+                    <td>{{user_detail.user_id}}</td>
+                    <td>{{ user_detail.user.get_full_name}}</td>
+                    <td>{{user_detail.age}}</td>
+                    <td><label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                      </label>
+                    </td>
+                    <td><a href="{% url 'edit-members' user_detail.user_id %}" class="fa fa-pen icons"></a>
+                      <a href="{% url 'detailed-view-members' user_detail.id %}" class="fas fa-street-view icons"></a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="right">
+      <div class="pagination mt-3">
+        <a href="#">&laquo;</a>
+        <a href="{% url 'view-members' %}" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">&raquo;</a>
+      </div>
+    </div> -->
+  </section>
+</div>
+{% endblock %}

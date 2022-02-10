@@ -1,0 +1,64 @@
+Lumen 
+
+sudo apt install composer
+create a folder
+open terminal
+sudo apt install phpunit
+composer create-project --prefer-dist laravel/lumen project-name
+cd project-folder
+composer require flipbox/lumen-generator
+code .
+open bootstrap
+open app.php
+Register Service Providers
+$app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+open .env
+DB_DATABASE=lumen_rest_api
+DB_USERNAME=myuser
+DB_PASSWORD=Bridge@123
+php artisan key:generate
+php artisan make:model Tablename -fmc  (model creation)
+open databases
+open migrations
+open created .php
+php artisan migrate
+open database -> factory -> postfactory.php
+open app -> models -> post.php
+in model type 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use HasFactory;
+php artisan tinker
+>>App\Models\count(10)->create()
+open routes -> web.php 
+$router->group(['prefix' => 'api'], function() use ($router){
+    $router->get('/posts','PostController@index');  
+});
+
+open App-> Http->Controllers->PostController.php
+use App\Models\Post;
+use Illuminate\Http\Request;
+
+class PostController extends Controller
+{
+    public function index(){
+
+        return Post::all();
+
+    }
+}
+
+open bootstrap->app.php
+
+uncomment line 28
+
+open postman
+
+in terminal php artisan serve
+
+collection->add collection(LUMEN)->Get New Request -> copy url from terminal(GET()) 
+Send
+
+npm run dev
+php artisan make:migration create_users_table --create=users
+php artisan make:controller AuthController
+

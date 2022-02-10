@@ -1,0 +1,30 @@
+#list1 .form-control {
+    border-color: transparent;
+    }
+    #list1 .form-control:focus {
+    border-color: transparent;
+    box-shadow: none;
+    }
+    #list1 .select-input.form-control[readonly]:not([disabled]) {
+    background-color: #fbfbfb;
+    }
+    .todo-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+    }
+    .custom-control-lg .custom-control-label::before,
+    .custom-control-lg .custom-control-label::after {
+        top: 0.1rem !important;
+        left: -2rem !important;
+        width: 1.25rem !important;
+        height: 1.25rem !important;
+    }
+    
+    .custom-control-lg .custom-control-label {
+        margin-left: 0.5rem !important;
+        font-size: 1rem !important;
+    }
+    

@@ -1,0 +1,89 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+{% load static %}
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>MembersTable</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{% url 'adminindex' %}">Home</a></li>
+            <li class="breadcrumb-item active"><a href="{% url 'view-members' %}">MembersTable</a></li>
+            <li class="breadcrumb-item active">Details</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div>
+    {% if messages %}
+    {% for message in messages %}
+    <h3>{{message}}</h3>
+    {% endfor %}
+    {% endif %}
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for use in users %}
+                  <tr>
+                    <th>User Id</th>
+                    <td>{{use.user_id}}</td>
+                  </tr>
+                  <tr>
+                    <th>Full Name</th>
+                    <td>{{use.user.get_full_name}}</td>
+                  </tr>
+                  <tr>
+                    <th>Username</th>
+                    <td>{{use.user.username}}</td>
+                  </tr>
+                  <tr>
+                    <th>Email</th>
+                    <td>{{use.user.email}}</td>
+                  </tr>
+                  <tr>
+                    <th>Status</th>
+                    <td><label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                      </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Age</th>
+                    <td>{{use.age}}</td>
+                  </tr>
+                  <tr>
+                    <th>Image</th>
+                    <td><img src="{{use.idproof.url}}" width=100 height="100"> </td>
+                  </tr>
+                  <tr>
+                    <th>Edit</th>
+                    <td><a href="{% url 'edit-members' use.user_id %}" class="fa fa-pen icons"></a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
